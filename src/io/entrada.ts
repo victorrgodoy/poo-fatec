@@ -1,14 +1,16 @@
-import promptSync from "prompt-sync";
+import promptSync from 'prompt-sync';
+
 export default class Entrada {
-    public receberNumero(mensagem: string): number {
+    public static receberNumero(mensagem: string) {
         let prompt = promptSync();
-        let valor = prompt(mensagem)
-        let numero  = new Number(valor)
-        return numero.valueOf()
+        let valor = prompt(mensagem);
+        let numero = new Number(valor);
+        return numero.valueOf();
     }
-    public receberTexto(mensagem: string): string {
+
+    public static receberTexto(mensagem: string) {
         let prompt = promptSync();
-        let texto = prompt(mensagem)
-        return texto
+        let texto = prompt(mensagem);
+        return texto;
     }
 }
