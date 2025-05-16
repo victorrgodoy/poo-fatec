@@ -1,0 +1,16 @@
+# Backend (server)
+server/node_modules/
+server/dist/
+server/out/
+server/.env
+
+# Frontend (client)
+client/node_modules/
+client/dist/
+client/.env
+
+# Shared
+*.log
+*.tsbuildinfo
+.DS_Store
+.vscode/
