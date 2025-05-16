@@ -1,5 +1,5 @@
 import "./App.css";
-import Client from "./Components/Client/Index";
+import Client from "./pages/clients/Index"
 
 function App() {
   return (

@@ -1,10 +1,17 @@
 import React from "react";
-import { Form } from "antd";
+import { Form, FormInstance } from "antd";
 
-const onFinishFailed = (errorInfo) => {
+interface FormBasicProps {
+  children: React.ReactNode;
+  onFinish: () => void;
+  form: FormInstance;
+}
+
+const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
 };
-const FormBasic = ({ children, onFinish, form }) => (
+
+const FormBasic: React.FC<FormBasicProps> = ({ children, onFinish, form }) => (
   <Form
     form={form}
     name="basic"
@@ -17,4 +24,5 @@ const FormBasic = ({ children, onFinish, form }) => (
     {children}
   </Form>
 );
+
 export default FormBasic;

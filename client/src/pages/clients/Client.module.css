@@ -2,11 +2,11 @@
   padding: 2rem;
 }
 
-h2 {
+.client h2 {
   margin-bottom: 2rem;
 }
 
-h4 {
+.client h4 {
   font-weight: 400;
   color: #91949f;
 }

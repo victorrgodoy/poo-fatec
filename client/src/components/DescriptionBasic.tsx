@@ -1,6 +1,20 @@
 import { Descriptions } from "antd";
+import React from "react";
+import { Client } from "../types/Client";
 
-const DescriptionBasic = ({ children, client, onClose, title }) => {
+interface DescriptionBasicProps {
+  children: React.ReactNode;
+  client: Client;
+  onClose: () => void;
+  title: string;
+}
+
+const DescriptionBasic: React.FC<DescriptionBasicProps> = ({
+  children,
+  client,
+  onClose,
+  title,
+}) => {
   if (!client) return null;
 
   return (

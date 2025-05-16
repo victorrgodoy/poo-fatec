@@ -10,6 +10,7 @@ body {
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+
 h1,
 h2,
 h3,
@@ -35,7 +36,7 @@ li {
 }
 
 :root {
-  --color: #2345f3; /* cor principal do botão */
-  --color-dark: #000; /* cor do texto no botão */
-  --color-light: #fafeff; /* usada no hover/focus */
+  --color: #2345f3;
+  --color-dark: #000;
+  --color-light: #fafeff;
 }

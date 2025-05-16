@@ -1,8 +1,17 @@
 import { Modal } from "antd";
-
 import React from "react";
 
-const ModalBasic = ({ isModalOpen, handleOk, handleCancel }) => {
+interface ModalBasicProps {
+  isModalOpen: boolean;
+  handleOk: () => void;
+  handleCancel: () => void;
+}
+
+const ModalBasic: React.FC<ModalBasicProps> = ({
+  isModalOpen,
+  handleOk,
+  handleCancel,
+}) => {
   return (
     <div>
       <Modal
