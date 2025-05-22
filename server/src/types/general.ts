@@ -1,20 +1,5 @@
 import { Client, Pet, Product, Service, Cpf, Rg, Phone } from "@prisma/client";
 
-export type TCpfWrite = {
-  number: string;
-  issueDate: Date;
-};
-
-export type TRgWrite = {
-  number: string;
-  issueDate: Date;
-};
-
-export type TPhoneWrite = {
-  ddd: string;
-  number: string;
-};
-
 // _____________  Client Types  _____________
 export type TClientID = Client["id"];
 export type TClientRead = Omit<Client, "registrationDate"> & {
@@ -27,25 +12,55 @@ export type TClientWrite = {
   name: string;
   socialName: string;
   cpf: TCpfWrite;
-  rgs: TRgWrite[];
-  phones: TPhoneWrite[];
 };
-export type TClientDelete = Client["id"];
+
+export type TCpfWrite = {number: string; issueDate: Date};
+
+// _____________  Rg Types  _____________
+export type TRgID = Rg["id"];
+export type TRgRead = Omit<Rg, "clientId">;
+export type TRgCreate = {
+  clientId: number;  
+  number: string;
+  issueDate: Date;
+};
+export type TRgUpdate = Omit<TRgCreate, "clientId">;  
+
+// _____________  Phone Types  _____________
+export type TPhoneID = Phone["id"];
+export type TPhoneRead = Omit<Phone, "clientId">;
+export type TPhoneCreate = {
+  clientId: number;  
+  ddd: string;
+  number: string;
+};
+export type TPhoneUpdate = Omit<TPhoneCreate, "clientId">;  
 
 // _____________  Pet Types  _____________
 export type TPetID = Pet["id"];
 export type TPetRead = Omit<Pet, "clientId">;
-export type TPetWrite = Omit<Pet, "id" | "clientId">;
-export type TPetDelete = Pet["id"];
+export type TPetCreate = {
+  clientId: number;  
+  name: string;
+  breed: string;
+  species: string;
+};
+export type TPetUpdate = Omit<TPetCreate, "clientId">; 
 
 // _____________  Product Types  _____________
 export type TProductID = Product["id"];
 export type TProductRead = Product;
-export type TProductWrite = Omit<Product, "id">;
-export type TProductDelete = Product["id"];
+export type TProductCreate = {
+  title: string;
+  value: number;
+}
+export type TProductUpdate = Omit<TProductCreate, "clientId">;
 
 // _____________  Service Types  _____________
 export type TServiceID = Service["id"];
 export type TServiceRead = Service;
-export type TServiceWrite = Omit<Service, "id">;
-export type TServiceDelete = Service["id"];
+export type TServiceCreate = {
+  title: string;
+  value: number;
+}
+export type TServiceUpdate = Omit<TServiceCreate, "clientId">;

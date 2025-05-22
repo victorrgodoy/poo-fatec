@@ -16,6 +16,7 @@ model Client {
   phones           Phone[]          
   consumedProducts ConsumedProduct[] 
   consumedServices ConsumedService[] 
+  petConsumption   PetConsumption[]
   pets             Pet[]            
   registrationDate DateTime         @default(now())
   @@map("clients")
@@ -53,6 +54,7 @@ model Pet {
   name        String  @db.VarChar(50)
   breed       String  @db.VarChar(50)
   species     String  @db.VarChar(30)
+  PetConsumption PetConsumption[] 
   clientId    Int
   client      Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
   @@map("pets")
@@ -77,9 +79,9 @@ model Service {
 model ConsumedProduct {
   id         Int      @id @default(autoincrement())
   productId  Int
-  product    Product  @relation(fields: [productId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   clientId   Int
-  client     Client   @relation(fields: [clientId], references: [id])
+  client     Client   @relation(fields: [clientId], references: [id], onDelete:Cascade)
   consumedAt DateTime @default(now())
   quantity   Int      @default(1)
   @@map("consumed_products")
@@ -88,10 +90,22 @@ model ConsumedProduct {
 model ConsumedService {
   id         Int      @id @default(autoincrement())
   serviceId  Int
-  service    Service  @relation(fields: [serviceId], references: [id])
+  service    Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
   clientId   Int
-  client     Client   @relation(fields: [clientId], references: [id])
+  client     Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
   consumedAt DateTime @default(now())
   quantity   Int      @default(1)
   @@map("consumed_services")
+}
+
+model PetConsumption {
+  id         Int      @id @default(autoincrement())
+  petId      Int
+  clientId   Int
+  itemName   String
+  consumedAt DateTime @default(now())
+  quantity   Int      @default(1)
+  pet    Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("consumed_pets")
 }
