@@ -13,4 +13,8 @@ export default class Phone {
     getNumber(): string {
         return this.number;
     }
+
+    toString() {
+        return this.getDdd() + ' | ' + this.getNumber();
+    }
 }

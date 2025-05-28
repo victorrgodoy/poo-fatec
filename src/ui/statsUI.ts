@@ -54,11 +54,11 @@ export default class StatsUI {
                 case 5:
                     this.itemsByPet();
                     Entrada.receberTexto(`Pressione Enter para continuar.`);
-                    break
+                    break;
                 case 6:
                     this.clientByAmoutSpent();
                     Entrada.receberTexto(`Pressione Enter para continuar.`);
-                    break
+                    break;
                 case 0:
                     execution = false;
                     break;
@@ -69,12 +69,11 @@ export default class StatsUI {
         }
     }
 
-    private clientByAmoutSpent(){
+    private clientByAmoutSpent() {
         console.log(`\nLista dos 5 clientes que mais gastaram:`);
-        return StatsService.clientByAmoutSpent(this.clientService.findAll()).forEach((c,i) => {
-            console.log(`${i + 1} - ${c.getName()}: ${c.getAmoutSpent()}`)
-        })
-
+        return StatsService.clientByAmoutSpent(this.clientService.findAll()).forEach((c, i) => {
+            console.log(`${i + 1} - ${c.getName()}: ${c.getAmoutSpent()}`);
+        });
     }
 
     private itemsByPet(): void {
@@ -135,18 +134,13 @@ export default class StatsUI {
             return;
         }
         StatsService.register(client, pet, item);
-        console.log(
-            `Consumo registrado com sucesso!\n` +
-                `Item: ${item.getName()}\n` +
-                `Cliente: ${client.getName()}\n` +
-                `Pet: ${pet.getName()}\n`,
-        );
+        console.log(`Consumo registrado com sucesso!\n` + `Item: ${item.getName()}\n` + `Cliente: ${client.getName()}\n` + `Pet: ${pet.getName()}\n`);
     }
 
     private chooseItem(): Product | Service | null {
         let type = Entrada.receberTexto(`Por favor, escolha o tipo (PRODUTO / SERVIÇO): `).toLowerCase().trim();
         if (type !== 'produto' && type !== 'serviço' && type !== 'servico') return null;
-    
+
         let name = Entrada.receberTexto(`Por favor, digite o nome do ${type}: `).trim();
         return type === 'produto' ? this.productService.find(name) : this.serviceService.find(name);
     }

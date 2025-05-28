@@ -17,7 +17,7 @@ export default class PetUI {
         clear();
         console.log(`Gerenciamento de Pet\nCliente: ${this.client.getName()}`);
         let execution = true;
-    
+
         while (execution) {
             console.log(`\nOpções: `);
             console.log(`1 - Cadastrar pet`);
@@ -25,9 +25,9 @@ export default class PetUI {
             console.log(`3 - Atualizar pet`);
             console.log(`4 - Remover pet`);
             console.log(`0 - Voltar\n`);
-    
+
             let option = Entrada.receberNumero(`Por favor, escolha uma opção: `);
-    
+
             switch (option) {
                 case 1:
                     this.save();

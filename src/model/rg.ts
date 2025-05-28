@@ -13,6 +13,6 @@ export default class RG {
     }
 
     toString() {
-        return this.getValue();
+        return this.getValue() + ' | ' + this.getDate().toLocaleDateString();
     }
 }

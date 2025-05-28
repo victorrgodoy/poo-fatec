@@ -44,7 +44,6 @@ export default class ProductUI {
                     console.log(`\nOperação não entendida :(\n`);
                     Entrada.receberTexto(`Pressione Enter para continuar.`);
             }
-
         }
     }
 

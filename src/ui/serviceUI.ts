@@ -44,7 +44,6 @@ export default class ServiceUI {
                     console.log(`\nOperação não entendida :(\n`);
                     Entrada.receberTexto(`Pressione Enter para continuar.`);
             }
-
         }
     }
 

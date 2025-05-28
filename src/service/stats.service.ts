@@ -60,6 +60,6 @@ export default class StatsService {
     }
 
     public static clientByAmoutSpent(clients: Client[]) {
-        return clients.sort((a,b) => b.getAmoutSpent() - a.getAmoutSpent())
+        return clients.sort((a, b) => b.getAmoutSpent() - a.getAmoutSpent());
     }
 }

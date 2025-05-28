@@ -70,8 +70,12 @@ export default class Client {
 
     getAmoutSpent(): number {
         let total = 0;
-        this.getConsumedProducts().forEach((p) => {total += p.getValue();});
-        this.getConsumedServices().forEach((s) => {total += s.getValue();});
+        this.getConsumedProducts().forEach((p) => {
+            total += p.getValue();
+        });
+        this.getConsumedServices().forEach((s) => {
+            total += s.getValue();
+        });
         return total;
     }
 
@@ -113,11 +117,20 @@ export default class Client {
             '\n' +
             'CPF: ' +
             this.getCpf().getValue() +
+            ' | ' +
+            this.getCpf().getDate().toLocaleDateString() +
             '\n' +
-            `RG: ` +
+            `RG(s): ` +
+            '\n' +
             this.getRgs()
                 .map((rg) => rg.toString())
-                .join(` | `)
+                .join(`\n`) +
+            `\n` +
+            `Telefone(s): ` +
+            '\n' +
+            this.getPhones()
+                .map((phone) => phone.toString())
+                .join(`\n`)
         );
     }
 }

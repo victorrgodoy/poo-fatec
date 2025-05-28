@@ -6,6 +6,7 @@ import Company from '../model/company';
 import ClientService from '../service/client.service';
 import PetUI from './petUI';
 import RG from '../model/rg';
+import Phone from '../model/phone';
 
 export default class ClientUI {
     private clientService: ClientService;
@@ -49,7 +50,7 @@ export default class ClientUI {
                     break;
                 default:
                     console.log(`\nOperação não entendida :(\n`);
-                     Entrada.receberTexto(`Pressione Enter para continuar.`);
+                    Entrada.receberTexto(`Pressione Enter para continuar.`);
             }
         }
     }
@@ -79,9 +80,9 @@ export default class ClientUI {
             return;
         }
         const cpf = new CPF(cpfNumber, this.formatDate(cpfDate));
-        const rg = new RG(rgNumber, this.formatDate(rgDate))
+        const rg = new RG(rgNumber, this.formatDate(rgDate));
         const client = new Client(name, socialName, cpf);
-        client.addRg(rg)
+        client.addRg(rg);
         const save = this.clientService.find(cpfNumber);
         if (save) {
             console.log(`\nCPF: ${cpfNumber} já cadastrado!\n`);
@@ -112,14 +113,23 @@ export default class ClientUI {
             let socialName = Entrada.receberTexto(`Por favor, digite o novo nome social: `);
             const updatedClient = new Client(name, socialName, client.getCpf());
             this.clientService.update(cpf, updatedClient);
-            let rg = Entrada.receberTexto(`Deseja adicionar RG? Aperte SIM / CONTINUAR: `).toUpperCase();
-            if(rg == 'SIM') {
+            let rg = Entrada.receberTexto(`Deseja adicionar RG? Digite SIM / CONTINUAR: `).toUpperCase();
+            if (rg == 'SIM') {
                 let rgNumber = Entrada.receberTexto(`Por favor, informe o número do RG: `).trim();
                 const rgDate = Entrada.receberTexto(`Por favor, informe a data de emissão do RG (dd/mm/yyyy): `).trim();
-                let date = this.formatDate(rgDate)
-                const rg = new RG(rgNumber, date)
-                client.addRg(rg)
+                let date = this.formatDate(rgDate);
+                const rg = new RG(rgNumber, date);
+                client.addRg(rg);
                 console.log(`\nRG adicionado com sucesso!`);
+            }
+
+            let phone = Entrada.receberTexto(`Deseja adicionar telefone? Digite SIM / CONTINUAR: `).toUpperCase();
+            if (phone == 'SIM') {
+                let ddd = Entrada.receberTexto(`Por favor, informe o ddd: `).trim();
+                let number = Entrada.receberTexto(`Por favor, informe o número: `).trim();
+                const phone = new Phone(ddd, number);
+                client.addPhone(phone);
+                console.log(`\nTelefone adicionado com sucesso!`);
             }
             console.log(`\nCliente atualizado com sucesso!\n`);
         }
