@@ -35,7 +35,6 @@ const NavbarLayout = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
                 <Nav.Link as={Link} to="/clientes">Clientes</Nav.Link>
                 <Nav.Link as={Link} to="/produtos">Produtos</Nav.Link>
                 <Nav.Link as={Link} to="/servicos">Serviços</Nav.Link>
