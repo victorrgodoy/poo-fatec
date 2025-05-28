@@ -7,4 +7,10 @@ Este projeto foi desenvolvido como um **pré-projeto de interface do site Pet Lo
 - **TypeScript**
 - **React** – com uso obrigatório de **componentes de classe**
 - **Bootstrap** – para estilização e responsividade
+- **Vite** – build tool
 
+### Execução
+   ```bash
+   npm install
+   npm run dev 
+   ```
