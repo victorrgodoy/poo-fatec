@@ -1,0 +1,15 @@
+{
+    "name": "c4p",
+    "version": "1.0.0",
+    "description": "PetLovers",
+    "main": "out/app/main.js",
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/node": "^18.11.9",
+        "@types/prompt-sync": "^4.2.3",
+        "clear": "^0.1.0",
+        "prettier": "^3.5.3",
+        "prompt-sync": "^4.2.0"
+    }
+}
