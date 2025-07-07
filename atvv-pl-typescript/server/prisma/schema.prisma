@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id               Int              @id @default(autoincrement())
+  name             String           @db.VarChar(100)
+  socialName       String           @db.VarChar(100)
+  cpf              Cpf?              
+  rgs              Rg[]             
+  phones           Phone[]          
+  consumedProducts ConsumedProduct[] 
+  consumedServices ConsumedService[] 
+  petConsumption   PetConsumption[]
+  pets             Pet[]            
+  registrationDate DateTime         @default(now())
+  @@map("clients")
+}
+
+model Cpf {
+  id         Int           @id @default(autoincrement())
+  number     String        @db.VarChar(14) @unique
+  issueDate  DateTime
+  clientId   Int           @unique
+  client     Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("cpfs")
+}
+
+model Rg {
+  id         Int     @id @default(autoincrement())
+  number     String  @db.VarChar(20)
+  issueDate  DateTime
+  clientId   Int
+  client     Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("rgs")
+}
+
+model Phone {
+  id         Int     @id @default(autoincrement())
+  ddd        String  @db.VarChar(2)
+  number     String  @db.VarChar(9)
+  clientId   Int
+  client     Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("phones")
+}
+
+model Pet {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(50)
+  breed       String  @db.VarChar(50)
+  species     String  @db.VarChar(30)
+  PetConsumption PetConsumption[] 
+  clientId    Int
+  client      Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("pets")
+}
+
+model Product {
+  id           Int               @id @default(autoincrement())
+  title        String            @db.VarChar(100)
+  value        Decimal           @db.Decimal(10,2)
+  consumptions ConsumedProduct[] 
+  @@map("products")
+}
+
+model Service {
+  id           Int               @id @default(autoincrement())
+  title        String            @db.VarChar(100)
+  value        Decimal           @db.Decimal(10,2)
+  consumptions ConsumedService[] 
+  @@map("services")
+}
+
+model ConsumedProduct {
+  id         Int      @id @default(autoincrement())
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  clientId   Int
+  client     Client   @relation(fields: [clientId], references: [id], onDelete:Cascade)
+  consumedAt DateTime @default(now())
+  quantity   Int      @default(1)
+  @@map("consumed_products")
+}
+
+model ConsumedService {
+  id         Int      @id @default(autoincrement())
+  serviceId  Int
+  service    Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  clientId   Int
+  client     Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  consumedAt DateTime @default(now())
+  quantity   Int      @default(1)
+  @@map("consumed_services")
+}
+
+model PetConsumption {
+  id         Int      @id @default(autoincrement())
+  petId      Int
+  clientId   Int
+  itemName   String
+  consumedAt DateTime @default(now())
+  quantity   Int      @default(1)
+  pet    Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("consumed_pets")
+}
