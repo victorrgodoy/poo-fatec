@@ -1,14 +1,16 @@
-# Pet Lover - Sistema de Gerenciamento de Pet Shop
-Sistema full-stack completo para gestão de clientes, pets, produtos, serviços e consumos em petshops.
+# Programação Orientada a Objetos - FATEC
 
-## Arquitetura do Projeto
-| Etapa      | Tecnologias           | Descrição                                                                 | Status       |
-|------------|-----------------------|---------------------------------------------------------------------------|--------------|
-| Atividade 1 | Node.js, TypeScript   | Backend em CLI com lógica do sistema (sem banco de dados).                    | ✅ Completa   |
-| Atividade 2 | React (Class), Bootstrap | Primeira versão do frontend usando componentes de classe.              | ✅ Completa   |
-| Atividade 3 | React (Functions), Bootstrap | Frontend refatorado com componentes funcionais.                      | ✅ Completa   |
-| Atividade 4 | React, Axios | Frontend consumindo API (CRUD de clientes para treinamento).     | ✅ Completa   |
-| [Atividade 5](./atvv-pl-typescript/)| **React, Node.js, Express.js, Prisma, Postgresql** | **Sistema completo**: Backend(Atv1) com banco de dados real + Frontend (Atv3). | ✅ Completa    |
+Repositório dedicado aos conteúdos e exercícios da disciplina de Programação Orientada a Objetos da FATEC.
+
+## Pet Lover — Sistema de Gerenciamento de Pet Shop
+Sistema full-stack para gestão de clientes, pets, produtos, serviços e consumos em pet shops.
+
+### Atividades
+[Atividade 1](./) — Backend em CLI com lógica do sistema (Node.js e TypeScript, sem banco de dados).  
+[Atividade 2](./) — Frontend inicial com React (componentes de classe) e Bootstrap.  
+[Atividade 3](./) — Frontend refatorado com React (componentes funcionais) e Bootstrap.  
+[Atividade 4](./) — Frontend consumindo API (CRUD de clientes) com React e Axios.  
+[Atividade 5](./atvv-pl-typescript/) — Sistema completo: Backend (Atv1) com banco de dados real (PostgreSQL, Prisma, Express.js) + Frontend (Atv3).
 
 
 ## Estrutura do Repositório
